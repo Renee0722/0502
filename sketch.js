@@ -10,8 +10,7 @@ function setup() {
   capture.size(windowWidth * 0.8, windowHeight * 0.8); // 設定影像大小為視窗的 80%
   capture.hide(); // 隱藏原始影像，僅顯示在畫布上
 
-  overlayGraphics = createGraphics(windowWidth * 0.8, windowHeight * 0.8);
-  drawOverlayGraphics();
+  overlayGraphics = createGraphics(capture.width, capture.height);
 }
 
 function draw() {
@@ -22,11 +21,19 @@ function draw() {
   // 將攝影機影像顯示在畫布上
   image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
 
+  // 更新 overlayGraphics
+  drawOverlayGraphics();
+
   // 將 overlayGraphics 顯示在攝影機影像的上方
   image(overlayGraphics, (width - capture.width) / 2, (height - capture.height) / 2);
 }
 
 function drawOverlayGraphics() {
+  // 確保攝影機影像已準備好
+  if (capture.width === 0 || capture.height === 0) {
+    return;
+  }
+
   // 設定背景顏色為黑色
   overlayGraphics.background(0);
 
