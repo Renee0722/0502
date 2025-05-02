@@ -12,6 +12,10 @@ function setup() {
 }
 
 function draw() {
+  // 將畫布的座標系統水平翻轉
+  translate(width, 0);
+  scale(-1, 1);
+
   // 將攝影機影像顯示在視窗的中間
   image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
 }
