@@ -2,18 +2,16 @@ let capture;
 let overlayGraphics;
 
 function setup() {
-  // 產生全螢幕的畫布，背景顏色為 f5ebe0
   createCanvas(windowWidth, windowHeight);
   background('#f5ebe0');
 
-  // 擷取攝影機的影像
+  // 啟用攝影機
   capture = createCapture(VIDEO);
   capture.size(windowWidth * 0.8, windowHeight * 0.8); // 設定影像大小為視窗的 80%
   capture.hide(); // 隱藏原始影像，僅顯示在畫布上
 
-  // 使用 createGraphics 產生與攝影機影像一樣大小的圖形
-  overlayGraphics = createGraphics(capture.width, capture.height);
-  drawOverlayGraphics(); // 繪製 overlayGraphics 的內容
+  overlayGraphics = createGraphics(windowWidth * 0.8, windowHeight * 0.8);
+  drawOverlayGraphics();
 }
 
 function draw() {
@@ -21,8 +19,8 @@ function draw() {
   translate(width, 0);
   scale(-1, 1);
 
-  // 將攝影機影像顯示在視窗的中間
-  //image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
+  // 將攝影機影像顯示在畫布上
+  image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
 
   // 將 overlayGraphics 顯示在攝影機影像的上方
   image(overlayGraphics, (width - capture.width) / 2, (height - capture.height) / 2);
