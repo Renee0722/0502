@@ -37,14 +37,20 @@ function drawOverlayGraphics() {
   // 設定背景顏色為黑色
   overlayGraphics.background(0);
 
-  // 在寬與高每隔 20 單位繪製圓
+  // 在寬與高每隔 20 單位繪製方框與圓
   for (let x = 0; x < overlayGraphics.width; x += 20) {
     for (let y = 0; y < overlayGraphics.height; y += 20) {
       // 取得相對位置的顏色
       let col = capture.get(x, y);
+
+      // 繪製方框
       overlayGraphics.fill(col);
       overlayGraphics.noStroke();
-      overlayGraphics.ellipse(x + 10, y + 10, 15, 15); // 繪製寬高為 15 的圓
+      overlayGraphics.rect(x + 1, y + 1, 18, 18); // 方框寬高為 18
+
+      // 繪製中間的圓
+      overlayGraphics.fill(0); // 圓的顏色為黑色
+      overlayGraphics.ellipse(x + 10, y + 10, 5, 5); // 圓的直徑為 5
     }
   }
 }
