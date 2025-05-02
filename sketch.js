@@ -22,7 +22,7 @@ function draw() {
   scale(-1, 1);
 
   // 將攝影機影像顯示在視窗的中間
-  image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
+  //image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
 
   // 將 overlayGraphics 顯示在攝影機影像的上方
   image(overlayGraphics, (width - capture.width) / 2, (height - capture.height) / 2);
